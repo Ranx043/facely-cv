@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Facely - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .cv-container {
+            max-width: 850px;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .photo-container {
+            flex-shrink: 0;
+        }
+
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #74b9ff;
+            object-fit: cover;
+            background: #2a2a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #74b9ff;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-info h1 {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .header-info .title {
+            font-size: 1.1em;
+            color: #74b9ff;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 0.9em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #74b9ff;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+        }
+
+        .left-column {
+            padding: 30px;
+        }
+
+        .right-column {
+            background: #f8f9fa;
+            padding: 30px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #2d3436;
+            border-bottom: 2px solid #74b9ff;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* EXPERIENCE */
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            color: #2d3436;
+        }
+
+        .experience-company {
+            color: #74b9ff;
+            font-weight: 500;
+        }
+
+        .experience-date {
+            color: #666;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .experience-description ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        /* SKILLS */
+        .skills-category {
+            margin-bottom: 15px;
+        }
+
+        .skills-category-title {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: #dfe6e9;
+            color: #2d3436;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .skill-tag.highlight {
+            background: #74b9ff;
+            color: white;
+        }
+
+        /* EDUCATION */
+        .education-item {
+            margin-bottom: 12px;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            color: #2d3436;
+            font-size: 0.95em;
+        }
+
+        .education-school {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .education-year {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        /* LANGUAGES */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .language-level {
+            color: #74b9ff;
+        }
+
+        /* CERTIFICATIONS */
+        .cert-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #f1f2f6;
+            border-radius: 5px;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #2d3436;
+            font-size: 0.9em;
+        }
+
+        .cert-issuer {
+            color: #666;
+            font-size: 0.8em;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .skill-tag {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="photo-container">
+                <div class="photo">
+                    Click to<br>add photo
+                </div>
+            </div>
+            <div class="header-info">
+                <h1>Maria Facely</h1>
+                <div class="title">Bilingual Operations Manager | Administrative & Finance Specialist | AI-Enhanced Problem Solving</div>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span>📍</span> Bonao, Dominican Republic
+                    </div>
+                    <div class="contact-item">
+                        <span>📧</span> <a href="mailto:email@example.com">email@example.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span> <a href="https://www.upwork.com/freelancers/~01d5bbde44685bf526" target="_blank">Upwork Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span> Available on request
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+                <!-- SUMMARY -->
+                <div class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <p style="font-size: 0.95em; color: #555;">
+                        Bilingual professional with 6+ years of experience in administration, finance, customer service, and education.
+                        Strong background in software development from ITLA. Detail-oriented problem solver who leverages AI tools
+                        for continuous improvement and operational efficiency. CCNA certified with technical foundations.
+                    </p>
+                </div>
+
+                <!-- EXPERIENCE -->
+                <div class="section">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">Co-Founder & Executive Administrative Assistant</div>
+                                <div class="experience-company">Bioenrich</div>
+                            </div>
+                            <div class="experience-date">Apr 2023 - Present</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Co-founded agro-livestock company focused on pig farming and organic fertilizer production</li>
+                                <li>Manage all administrative operations, finances, and business documentation</li>
+                                <li>Implement process improvements using data analysis and AI tools</li>
+                                <li>Handle client relations and supplier negotiations</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">Upper Intermediate English Teacher</div>
+                                <div class="experience-company">Success English School</div>
+                            </div>
+                            <div class="experience-date">Apr 2023 - Jun 2024</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Taught advanced English to intermediate and upper-level students</li>
+                                <li>Developed curriculum for reading, conversation, grammar, and exam prep</li>
+                                <li>Improved student pass rates through personalized teaching methods</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <div class="experience-title">Bilingual Customer Service Representative</div>
+                                <div class="experience-company">Conduent Solutions Dominican Republic</div>
+                            </div>
+                            <div class="experience-date">Jan 2018 - Mar 2019</div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Provided bilingual support (English-Spanish) for U.S.-based clients</li>
+                                <li>Handled technical support calls and issue resolution</li>
+                                <li>Maintained high customer satisfaction scores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KEY STRENGTHS -->
+                <div class="section">
+                    <h2 class="section-title">Key Strengths</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9em;">
+                        <div style="padding: 10px; background: #f8f9fa; border-radius: 5px; border-left: 3px solid #74b9ff;">
+                            <strong>Detail-Oriented</strong><br>
+                            <span style="color: #666;">Meticulous attention to accuracy in all tasks</span>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-radius: 5px; border-left: 3px solid #74b9ff;">
+                            <strong>Results-Driven</strong><br>
+                            <span style="color: #666;">Focused on measurable outcomes</span>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-radius: 5px; border-left: 3px solid #74b9ff;">
+                            <strong>AI-Enhanced</strong><br>
+                            <span style="color: #666;">Leverages AI for problem solving</span>
+                        </div>
+                        <div style="padding: 10px; background: #f8f9fa; border-radius: 5px; border-left: 3px solid #74b9ff;">
+                            <strong>Bilingual</strong><br>
+                            <span style="color: #666;">Native Spanish, Fluent English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+                <!-- SKILLS -->
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Administration</div>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Operations Management</span>
+                            <span class="skill-tag">Documentation</span>
+                            <span class="skill-tag">Process Improvement</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Finance</div>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Financial Analysis</span>
+                            <span class="skill-tag">Budgeting</span>
+                            <span class="skill-tag">Reporting</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Data & Technology</div>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Data Analysis</span>
+                            <span class="skill-tag">AI Tools</span>
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">IT Fundamentals</span>
+                        </div>
+                    </div>
+
+                    <div class="skills-category">
+                        <div class="skills-category-title">Communication</div>
+                        <div class="skills-list">
+                            <span class="skill-tag highlight">Teaching</span>
+                            <span class="skill-tag">Customer Service</span>
+                            <span class="skill-tag">Sign Language</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+
+                    <div class="education-item">
+                        <div class="education-degree">Software Development Technologist</div>
+                        <div class="education-school">ITLA - Instituto Tecnologico de Las Americas</div>
+                        <div class="education-year">2013 - 2017</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="education-degree">Computer Science</div>
+                        <div class="education-school">Liceo Don Pedro Mir</div>
+                        <div class="education-year">2009 - 2013</div>
+                    </div>
+                </div>
+
+                <!-- CERTIFICATIONS -->
+                <div class="section">
+                    <h2 class="section-title">Certifications</h2>
+
+                    <div class="cert-item">
+                        <div class="cert-name">CCNA (Cisco Certified Network Associate)</div>
+                        <div class="cert-issuer">ITLA - June 2014</div>
+                    </div>
+                </div>
+
+                <!-- LANGUAGES -->
+                <div class="section">
+                    <h2 class="section-title">Languages</h2>
+
+                    <div class="language-item">
+                        <span>Spanish</span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-item">
+                        <span>English</span>
+                        <span class="language-level">Fluent</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Sign Language</span>
+                        <span class="language-level">Conversational</span>
+                    </div>
+                </div>
+
+                <!-- AVAILABILITY -->
+                <div class="section">
+                    <h2 class="section-title">Availability</h2>
+                    <div style="font-size: 0.9em;">
+                        <p style="margin-bottom: 8px;">
+                            <strong>Hours:</strong> 30+ hrs/week
+                        </p>
+                        <p>
+                            <strong>Type:</strong> Remote / Contract
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
